@@ -8,13 +8,13 @@ full_data = db.waterData
 predict_data = db.predict
 
 
-def addNewDataForStorage(time, nhietdo, doamdat, cuongdosang, doamkhongkhi):
+def addNewDataForStorage(time, nhietdo, doamdat, doamkhongkhi):
     full_data.insert_one(
         {
             "time": time,
             "temperature": nhietdo,
             "soil_moisture": doamdat,
-            "light_intensity": cuongdosang,
+            # "light_intensity": cuongdosang,
             "air_humidity": doamkhongkhi,
         }
     )

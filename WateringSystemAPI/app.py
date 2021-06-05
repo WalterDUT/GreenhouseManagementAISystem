@@ -4,6 +4,6 @@ import pickle
 
 app = Flask(__name__)
 print("accessing server .... please wait this might take a while")
-filename='C:/Users/ADMIN/Desktop/PycharmProjects/FlaskApps/WateringSystemAPI/finalized_model.sav'
+filename='C:/Users/PC/Desktop/Do-an-AI-main/Do-an-AI-main/WateringSystemAPI/finalized_model.sav'
 loaded_model = pickle.load(open(filename, "rb"))
 import routes

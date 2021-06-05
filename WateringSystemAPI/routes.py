@@ -15,7 +15,8 @@ def home():
 def storage():
     data = request.values
     # print(jsonify(data))
-    db.addNewDataForStorage(data['time'],data['temperature'],data['soil_moisture'],data['light_intensity'],data['air_humidity'])
+    # ,data['light_intensity']
+    db.addNewDataForStorage(data['time'],data['temperature'],data['soil_moisture'],data['air_humidity'])
     return jsonify(data)
 
 
@@ -24,12 +25,14 @@ def predict():
     data = request.values
     if float(data["soil_moisture"]) < 0:
         response = {"prediction": -1}
+        prediction=-1
         db.addNewDataPredicted(
             prediction=-1,
             soil_moisture=float(data["soil_moisture"]),
             upload_time=data["upload_time"],
         )
-        return jsonify(response)
+        # return jsonify(response)
+        return str(prediction)
     x = preprocessing.convertDataShape(data["soil_moisture"])
     predictdata = loaded_model.predict(x)
     response = {"prediction": predictdata[0]}
@@ -38,7 +41,8 @@ def predict():
         soil_moisture=float(data["soil_moisture"]),
         upload_time=data["upload_time"],
     )
-    return jsonify(response)
+    # return jsonify(response)
+    return str(predictdata[0])
 
 
 @app.route("/getdata", methods=["GET"])
