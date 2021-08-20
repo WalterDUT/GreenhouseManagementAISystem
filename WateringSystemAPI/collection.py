@@ -31,10 +31,10 @@ def addManyDataJson(jsondatas):
 def getHistoyData():
     data = full_data.find()
     jsondata = {}
-    i=0
+    i = 0
     for index in data:
         jsondata[i] = str(index)
-        i+=1
+        i += 1
     return jsondata
 
 

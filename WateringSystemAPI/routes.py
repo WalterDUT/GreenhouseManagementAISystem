@@ -8,7 +8,7 @@ import preprocessing
 
 @app.route("/")
 def home():
-    return "Welcome to water system of my dev team. Never do something stupid, if i know i will put my dick in ur ass"
+    return "Welcome to water system of my dev team! Try to do something fun!"
 
 
 @app.route("/storage", methods=["POST"])
@@ -16,7 +16,9 @@ def storage():
     data = request.values
     # print(jsonify(data))
     # ,data['light_intensity']
-    db.addNewDataForStorage(data['time'],data['temperature'],data['soil_moisture'],data['air_humidity'])
+    db.addNewDataForStorage(
+        data["time"], data["temperature"], data["soil_moisture"], data["air_humidity"]
+    )
     return jsonify(data)
 
 
@@ -25,7 +27,7 @@ def predict():
     data = request.values
     if float(data["soil_moisture"]) < 0:
         response = {"prediction": -1}
-        prediction=-1
+        prediction = -1
         db.addNewDataPredicted(
             prediction=-1,
             soil_moisture=float(data["soil_moisture"]),
