@@ -1,2 +1,2 @@
-# Do-an_AI
-Manage code
+# Greenhouse management system
+Server Flask API + Client Mobile Flutter and ESP8266
